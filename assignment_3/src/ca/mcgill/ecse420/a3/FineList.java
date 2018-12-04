@@ -1,9 +1,7 @@
 package ca.mcgill.ecse420.a3;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class FineList<T> {
-	
+public class FineList<T> {	
 	//Node class (Implementation of Fig 9.2 of book)
 	//making each node a RentrantLock
 	//So adding a lock to each node (fine grained)
@@ -119,6 +117,6 @@ public class FineList<T> {
 		}
 		finally {
 			pred.unlock();
-		}		
+		}
 	}
 }
