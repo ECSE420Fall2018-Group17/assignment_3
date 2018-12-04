@@ -72,8 +72,7 @@ public class BoundedQueueArray<T> {
 		boolean mustWakeEnqueuers = false;
 		deqLock.lock();
 		try {
-			while(size.get() == 0) {
-			//while(tail-head == 0) {
+			while(size.get() == 0) {			
 				try {
 					System.out.println(Thread.currentThread().getName()+":Queue is empty, waiting");
 					notEmptyCondition.await();
@@ -86,8 +85,7 @@ public class BoundedQueueArray<T> {
 			System.out.println("Removed from head at Index:"+(head%arrayElements.length));
 			head++;
 			System.out.println("Changed Head Index:"+(head%arrayElements.length));
-			if(size.getAndDecrement() == capacity){
-			//if(tail-head == arrayElements.length-1) {
+			if(size.getAndDecrement() == capacity){			
 				mustWakeEnqueuers = true;
 			}						
 		}finally {
